@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Intalando o postgres no Ubuntu 22.04 lts"
 date:   2013-11-10 10:18:00
 categories: Thriller Comedy Horror
 ---
