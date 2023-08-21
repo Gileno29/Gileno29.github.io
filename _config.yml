@@ -1,6 +1,6 @@
 name: .config
 description: Blogging about IT
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+meta_description: "Its a space to learn real IT"
 
 markdown: kramdown
 highlighter: rouge
