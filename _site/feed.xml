@@ -2,12 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <description>Blogging about stuffs</description>
-    <link>http://localhost:4000/kasper/</link>
-    <atom:link href="http://localhost:4000/kasper/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Aug 2023 08:50:00 -0300</pubDate>
-    <lastBuildDate>Tue, 15 Aug 2023 08:50:00 -0300</lastBuildDate>
+    <description>Blogging about IT</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 23 Aug 2023 08:56:08 -0300</pubDate>
+    <lastBuildDate>Wed, 23 Aug 2023 08:56:08 -0300</lastBuildDate>
     <generator>Jekyll v4.3.2</generator>
+    
+      <item>
+        <title>Instalando o PostgreSQL no Ubuntu 22.04 lts</title>
+        <description>&lt;p&gt;O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse &lt;a href=&quot;https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/&quot;&gt;link&lt;/a&gt;. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas. 
+Bem vamos lá!.&lt;/p&gt;
+
+&lt;h1 id=&quot;instalação&quot;&gt;Instalação&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Atualize seus repositorios.
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  apt-get update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Instale o postgres com o seguinte linha de comando:
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;postgresql postgresql-contrib
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A opção -contrib permite que seja utilizado alguns modulos adicionais caso seja preciso para algo, não é obrigatorio instalar, então pode ser deixado de lado no momento da instlação se você não precisa de algum desses modulos específicos. &lt;a href=&quot;https://www.mankier.com/package/postgresql-contrib&quot;&gt;Aqui&lt;/a&gt; tem uma lista desses modulos do pacote.&lt;/p&gt;
+
+&lt;p&gt;após a instalação finalizar o postgres por padrão vai ccriar um usuario em sua máquina chamdo postgres e você pode utilizar esse usuario para logar no banco de dados. Como isso funciona? Bem o postgres trabalha com esquema de “ROLES” para gerenciamento de usuarios e permicionamento, no final é bem similar ao users e groups de sistemas Linux/Unix, após está instalado o postgres vai utilizar ident authentication traduzindo: Ele vai associar usuarios de seu sistema como alguma ROLE que Esteja configurada nele, nesse caso a ROLE postgres que vai ser associada ao usuario postgres.&lt;/p&gt;
+
+&lt;h1 id=&quot;acesso-e-configuração&quot;&gt;Acesso e configuração&lt;/h1&gt;
+&lt;p&gt;Vamos agora logar no baco de dados.
+Para logar no banco de dados existe algumas formas, vou passar a que acredito ser mais simpres e intuitiva:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Acesse o usuario postgres a partir do seu usuario root
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;su postgres
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Acesse o banco de dados com comando psql
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;psql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Você vai cair na tela de acesso do postgreSQL.
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; psql &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;14.9 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu 14.9-0ubuntu0.22.04.1&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+ Type &lt;span class=&quot;s2&quot;&gt;&quot;help&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;help.
+
+ &lt;span class=&quot;nv&quot;&gt;postgres&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pronto a partir desse momento já pode ser criado databases novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples “psql” para isso vamos precisar configurar uma senha para nosso usuario postgres.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 21 Aug 2023 08:37:00 -0300</pubDate>
+        <link>http://localhost:4000/it/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html</link>
+        <guid isPermaLink="true">http://localhost:4000/it/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html</guid>
+        
+        
+        <category>IT</category>
+        
+      </item>
     
       <item>
         <title>Hello World!</title>
@@ -15,8 +69,8 @@
 &lt;p&gt;Y Love You World s3&lt;/p&gt;
 </description>
         <pubDate>Wed, 14 Jan 2015 12:00:00 -0300</pubDate>
-        <link>http://localhost:4000/kasper/2015/01/14/hello-world.html</link>
-        <guid isPermaLink="true">http://localhost:4000/kasper/2015/01/14/hello-world.html</guid>
+        <link>http://localhost:4000/2015/01/14/hello-world.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2015/01/14/hello-world.html</guid>
         
         
       </item>
@@ -38,8 +92,8 @@ To add new posts, simply add a file in the &lt;code class=&quot;language-plainte
 
 </description>
         <pubDate>Sun, 10 Nov 2013 07:18:00 -0300</pubDate>
-        <link>http://localhost:4000/kasper/thriller/comedy/horror/2013/11/10/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://localhost:4000/kasper/thriller/comedy/horror/2013/11/10/welcome-to-jekyll.html</guid>
+        <link>http://localhost:4000/thriller/comedy/horror/2013/11/10/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://localhost:4000/thriller/comedy/horror/2013/11/10/welcome-to-jekyll.html</guid>
         
         
         <category>Thriller</category>
