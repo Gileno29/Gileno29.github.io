@@ -5,37 +5,13 @@
     <description>Blogging about IT</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Aug 2023 09:05:32 -0300</pubDate>
-    <lastBuildDate>Fri, 25 Aug 2023 09:05:32 -0300</lastBuildDate>
+    <pubDate>Fri, 25 Aug 2023 16:45:46 -0300</pubDate>
+    <lastBuildDate>Fri, 25 Aug 2023 16:45:46 -0300</lastBuildDate>
     <generator>Jekyll v4.3.2</generator>
     
       <item>
-        <title>Instalar Postgres No Ubuntu 22.04</title>
-        <description>&lt;h2 id=&quot;-head&quot;&gt;«««&amp;lt; HEAD&lt;/h2&gt;
-&lt;p&gt;layout: post
-title:  “Instalando o PostgreSQL no Ubuntu 22.04 lts”
-date:   2023-08-21 08:37
-categories: IT
-—&lt;/p&gt;
-&lt;p style=&quot;text-align:justify;&quot;&gt; O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse &lt;a href=&quot;https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/&quot;&gt;link&lt;/a&gt;. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas.&lt;/p&gt;
-&lt;p&gt;=======
-O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse &lt;a href=&quot;https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/&quot;&gt;link&lt;/a&gt;. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;blockquote&gt;
-      &lt;blockquote&gt;
-        &lt;blockquote&gt;
-          &lt;blockquote&gt;
-            &lt;blockquote&gt;
-              &lt;p&gt;ff54a4441fee3617a9f521f1fb5709b7cb6d0d2d
-Bem vamos lá!.&lt;/p&gt;
-            &lt;/blockquote&gt;
-          &lt;/blockquote&gt;
-        &lt;/blockquote&gt;
-      &lt;/blockquote&gt;
-    &lt;/blockquote&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
+        <title>Instalando o PostgreSQL no Ubuntu 22.04 lts</title>
+        <description>&lt;p style=&quot;text-align:justify;&quot;&gt; O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse &lt;a href=&quot;https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/&quot;&gt;link&lt;/a&gt;. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas.Bem vamos lá!.&lt;/p&gt;
 
 &lt;h2 id=&quot;instalação&quot;&gt;Instalação&lt;/h2&gt;
 &lt;ul&gt;
@@ -78,7 +54,6 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;«««&amp;lt; HEAD&lt;/p&gt;
 &lt;p style=&quot;text-align:justify;&quot;&gt;Pronto a partir desse momento já pode ser criado databases novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples &quot;psql&quot; para isso vamos precisar configurar uma senha para nosso usuario postgres.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -117,29 +92,13 @@ O arquivo vai possuir uma linha com a seguinte designação:&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p style=&quot;text-align:justify;&quot;&gt;Pronto, com isso você configurou uma senha em seu usuário postgres. &lt;/p&gt;
-
-&lt;p&gt;=======
-Pronto a partir desse momento já pode ser criado databases e novos “ROLES” para gerenciamento do banco de dados. Porém vamos dizer que você deseja pôr um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples “psql” para isso vamos precisar configurar uma senha para nosso usuário postgres.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;blockquote&gt;
-      &lt;blockquote&gt;
-        &lt;blockquote&gt;
-          &lt;blockquote&gt;
-            &lt;blockquote&gt;
-              &lt;p&gt;ff54a4441fee3617a9f521f1fb5709b7cb6d0d2d&lt;/p&gt;
-            &lt;/blockquote&gt;
-          &lt;/blockquote&gt;
-        &lt;/blockquote&gt;
-      &lt;/blockquote&gt;
-    &lt;/blockquote&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
 </description>
-        <pubDate>Mon, 21 Aug 2023 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html</guid>
+        <pubDate>Mon, 21 Aug 2023 08:37:00 -0300</pubDate>
+        <link>http://localhost:4000/it/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html</link>
+        <guid isPermaLink="true">http://localhost:4000/it/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html</guid>
         
+        
+        <category>IT</category>
         
       </item>
     

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>.config - Blogging about IT</title>
+    <meta name="description" content="Its a space to learn real IT" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css " />
+
+</head>
+<body class="home-template">
+
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Instalando o PostgreSQL no Ubuntu 22.04 lts</h1>
+            <section class="post-meta">
+                
+                    on IT
+                
+                <time class="post-date" datetime="2023-08-21">21 Aug 2023</time>
+            </section>
+        </header>
+
+<!--         <header class="post-header">
+            <a id="blog-logo" href="http://localhost:4000">
+                
+                    <span class="blog-title">.config</span>
+                
+            </a>
+        </header> -->
+
+        <!-- <span class="post-meta">
+            <time datetime="2023-08-21">21 Aug 2023</time>
+            
+                on IT
+            
+        </span> -->
+
+        <!-- <h1 class="post-title">Instalando o PostgreSQL no Ubuntu 22.04 lts</h1> -->
+
+        <section class="post-content">
+            <p style="text-align:justify;"> O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse <a href="https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/">link</a>. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas.Bem vamos lá!.</p>
+
+<h2 id="instalação">Instalação</h2>
+<ul>
+  <li>Atualize seus repositorios.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  apt-get update
+</code></pre></div>    </div>
+  </li>
+  <li>Instale o postgres com o seguinte linha de comando:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>apt <span class="nb">install </span>postgresql postgresql-contrib
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p style="text-align:justify;">A opção -contrib permite que seja utilizado alguns modulos adicionais caso seja preciso para algo, não é obrigatorio instalar, então pode ser deixado de lado no momento da instlação se você não precisa de algum desses modulos específicos. <a href="https://www.mankier.com/package/postgresql-contrib">Aqui</a> tem uma lista desses modulos do pacote.</p>
+
+<p style="text-align:justify;">após a instalação finalizar o postgres por padrão vai ccriar um usuario em sua máquina chamdo postgres e você pode utilizar esse usuario para logar no banco de dados. Como isso funciona? Bem o postgres trabalha com esquema de "ROLES" para gerenciamento de usuarios e permicionamento, no final é bem similar ao users e groups de sistemas Linux/Unix, após está instalado o postgres vai utilizar ident authentication traduzindo: Ele vai associar usuarios de seu sistema como alguma ROLE que Esteja configurada nele, nesse caso a ROLE postgres que vai ser associada ao usuario postgres.</p>
+
+<h2 id="acesso-e-configuração">Acesso e configuração</h2>
+<p>Vamos agora logar no baco de dados.
+Para logar no banco de dados existe algumas formas, vou passar a que acredito ser mais simpres e intuitiva:</p>
+
+<ul>
+  <li>
+    <p style="text-align:justify;">Acesse o usuario postgres a partir do seu usuario root</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>su postgres
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p style="text-align:justify;">Acesse o banco de dados com comando psql </p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>psql
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p style="text-align:justify;">Você vai cair na tela de acesso do postgreSQL. </p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> psql <span class="o">(</span>14.9 <span class="o">(</span>Ubuntu 14.9-0ubuntu0.22.04.1<span class="o">))</span>
+ Type <span class="s2">"help"</span> <span class="k">for </span>help.
+
+ <span class="nv">postgres</span><span class="o">=</span><span class="c">#</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p style="text-align:justify;">Pronto a partir desse momento já pode ser criado databases novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples "psql" para isso vamos precisar configurar uma senha para nosso usuario postgres.</p>
+
+<ul>
+  <li>
+    <p style="text-align:justify;">Para configurar uma senha para o usuario postgres podemos fazer da seguinte forma:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">postgres</span><span class="o">=</span><span class="c"># \password</span>
+  Enter new password <span class="k">for </span>user <span class="s2">"postgres"</span>:
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p style="text-align:justify;"> O banco vai pedir para confirmar a senha após isso, se elas não forem iguasi a operação não vai funcionar. Após isso vai ser preciso acessar o arquivo de configuração do postgres que fica no seguinte path:/etc/postgresql/sua_versao_do_postgres/main/pg_hba.conf.
+O arquivo vai possuir uma linha com a seguinte designação:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DO NOT DISABLE!</span>
+<span class="c"># If you change this first entry you will need to make sure that the</span>
+<span class="c"># database superuser can access the database using some other method.</span>
+<span class="c"># Noninteractive access to all databases is required during automatic</span>
+<span class="c"># maintenance (custom daily cronjobs, replication, and similar tasks).</span>
+<span class="c">#</span>
+<span class="c"># Database administrative login by Unix domain socket</span>
+<span class="nb">local   </span>all         	postgres                            	peer
+
+<span class="c"># TYPE  DATABASE    	USER        	ADDRESS             	METHOD</span>
+
+<span class="c"># "local" is for Unix domain socket connections only</span>
+</code></pre></div></div>
+<ul>
+  <li>
+    <p style="text-align:justify;">Altere o peer para md5 e restart o servico do banco de dados:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo </span>service postgresql restart
+</code></pre></div>    </div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$root</span>: /home/gileno ❯ psql <span class="nt">-U</span> postgres
+ Password <span class="k">for </span>user postgres:
+</code></pre></div>    </div>
+  </li>
+</ul>
+<p style="text-align:justify;">Pronto, com isso você configurou uma senha em seu usuário postgres. </p>
+
+        </section>
+
+        
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">Gileno Duarte's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <!-- Author Name -->
+                    <h4> Gileno Duarte </h4>
+                    <!-- Author Bio -->
+                    <p>
+                       Meu nome é Gileno sou Profissional de TI a mais de 5 anos atuando com Diversas areas desde de Infraestrutura a Desenvolvimento. Atuo com Liguagens como Pyhton, Golang, Javascript e C++.
+                       Sou apaixonado por TI em geral e atualmente foco em melhorar meus conhecimentos em Cloud.
+                    </p>
+                </section>
+            
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Instalando o PostgreSQL no Ubuntu 22.04 lts&amp;url=http://yourblog-domain.com/it/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yourblog-domain.com/it/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yourblog-domain.com/it/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+            <!-- Disqus comments -->
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="">.config</a> &copy; 
+              2023 &bull; All rights reserved.
+      </section>
+      <section class="poweredby">Made with Jekyll using 
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section>
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>   
+</body>
+</html>
