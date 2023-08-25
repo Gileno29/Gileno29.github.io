@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 layout: post
 title:  "Instalando o PostgreSQL no Ubuntu 22.04 lts"
@@ -5,6 +6,9 @@ date:   2023-08-21 08:37
 categories: IT
 ---
 <p style="text-align:justify;"> O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse <a href="https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/">link</a>. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas.</p>
+=======
+O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse [link](https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/). Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas.
+>>>>>>> ff54a4441fee3617a9f521f1fb5709b7cb6d0d2d
 Bem vamos lá!.
 
 ## Instalação
@@ -42,6 +46,7 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
 	postgres=#
 ```
 
+<<<<<<< HEAD
 <p style="text-align:justify;">Pronto a partir desse momento já pode ser criado databases novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples "psql" para isso vamos precisar configurar uma senha para nosso usuario postgres.</p>
 
 - <p style="text-align:justify;">Para configurar uma senha para o usuario postgres podemos fazer da seguinte forma:</p>
@@ -77,3 +82,6 @@ local   all         	postgres                            	peer
  ```
 <p style="text-align:justify;">Pronto, com isso você configurou uma senha em seu usuário postgres. </p>
 
+=======
+Pronto a partir desse momento já pode ser criado databases e novos “ROLES” para gerenciamento do banco de dados. Porém vamos dizer que você deseja pôr um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples "psql" para isso vamos precisar configurar uma senha para nosso usuário postgres.
+>>>>>>> ff54a4441fee3617a9f521f1fb5709b7cb6d0d2d
