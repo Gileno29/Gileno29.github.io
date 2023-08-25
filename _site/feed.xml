@@ -5,16 +5,16 @@
     <description>Blogging about IT</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 23 Aug 2023 08:56:08 -0300</pubDate>
-    <lastBuildDate>Wed, 23 Aug 2023 08:56:08 -0300</lastBuildDate>
+    <pubDate>Fri, 25 Aug 2023 08:59:04 -0300</pubDate>
+    <lastBuildDate>Fri, 25 Aug 2023 08:59:04 -0300</lastBuildDate>
     <generator>Jekyll v4.3.2</generator>
     
       <item>
         <title>Instalando o PostgreSQL no Ubuntu 22.04 lts</title>
-        <description>&lt;p&gt;O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse &lt;a href=&quot;https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/&quot;&gt;link&lt;/a&gt;. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas. 
-Bem vamos lá!.&lt;/p&gt;
+        <description>&lt;p style=&quot;text-align:justify;&quot;&gt; O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse &lt;a href=&quot;https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/&quot;&gt;link&lt;/a&gt;. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas.&lt;/p&gt;
+&lt;p&gt;Bem vamos lá!.&lt;/p&gt;
 
-&lt;h1 id=&quot;instalação&quot;&gt;Instalação&lt;/h1&gt;
+&lt;h2 id=&quot;instalação&quot;&gt;Instalação&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Atualize seus repositorios.
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  apt-get update
@@ -26,24 +26,27 @@ Bem vamos lá!.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;A opção -contrib permite que seja utilizado alguns modulos adicionais caso seja preciso para algo, não é obrigatorio instalar, então pode ser deixado de lado no momento da instlação se você não precisa de algum desses modulos específicos. &lt;a href=&quot;https://www.mankier.com/package/postgresql-contrib&quot;&gt;Aqui&lt;/a&gt; tem uma lista desses modulos do pacote.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;A opção -contrib permite que seja utilizado alguns modulos adicionais caso seja preciso para algo, não é obrigatorio instalar, então pode ser deixado de lado no momento da instlação se você não precisa de algum desses modulos específicos. &lt;a href=&quot;https://www.mankier.com/package/postgresql-contrib&quot;&gt;Aqui&lt;/a&gt; tem uma lista desses modulos do pacote.&lt;/p&gt;
 
-&lt;p&gt;após a instalação finalizar o postgres por padrão vai ccriar um usuario em sua máquina chamdo postgres e você pode utilizar esse usuario para logar no banco de dados. Como isso funciona? Bem o postgres trabalha com esquema de “ROLES” para gerenciamento de usuarios e permicionamento, no final é bem similar ao users e groups de sistemas Linux/Unix, após está instalado o postgres vai utilizar ident authentication traduzindo: Ele vai associar usuarios de seu sistema como alguma ROLE que Esteja configurada nele, nesse caso a ROLE postgres que vai ser associada ao usuario postgres.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;após a instalação finalizar o postgres por padrão vai ccriar um usuario em sua máquina chamdo postgres e você pode utilizar esse usuario para logar no banco de dados. Como isso funciona? Bem o postgres trabalha com esquema de &quot;ROLES&quot; para gerenciamento de usuarios e permicionamento, no final é bem similar ao users e groups de sistemas Linux/Unix, após está instalado o postgres vai utilizar ident authentication traduzindo: Ele vai associar usuarios de seu sistema como alguma ROLE que Esteja configurada nele, nesse caso a ROLE postgres que vai ser associada ao usuario postgres.&lt;/p&gt;
 
-&lt;h1 id=&quot;acesso-e-configuração&quot;&gt;Acesso e configuração&lt;/h1&gt;
+&lt;h2 id=&quot;acesso-e-configuração&quot;&gt;Acesso e configuração&lt;/h2&gt;
 &lt;p&gt;Vamos agora logar no baco de dados.
 Para logar no banco de dados existe algumas formas, vou passar a que acredito ser mais simpres e intuitiva:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Acesse o usuario postgres a partir do seu usuario root
+  &lt;li&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;Acesse o usuario postgres a partir do seu usuario root&lt;/p&gt;
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;su postgres
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;Acesse o banco de dados com comando psql
+  &lt;li&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;Acesse o banco de dados com comando psql &lt;/p&gt;
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;psql
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;Você vai cair na tela de acesso do postgreSQL.
+  &lt;li&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;Você vai cair na tela de acesso do postgreSQL. &lt;/p&gt;
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; psql &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;14.9 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ubuntu 14.9-0ubuntu0.22.04.1&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
  Type &lt;span class=&quot;s2&quot;&gt;&quot;help&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;help.
 
@@ -52,7 +55,45 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Pronto a partir desse momento já pode ser criado databases novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples “psql” para isso vamos precisar configurar uma senha para nosso usuario postgres.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;Pronto a partir desse momento já pode ser criado databases novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples &quot;psql&quot; para isso vamos precisar configurar uma senha para nosso usuario postgres.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;Para configurar uma senha para o usuario postgres podemos fazer da seguinte forma:&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nv&quot;&gt;postgres&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# \password&lt;/span&gt;
+  Enter new password &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;user &lt;span class=&quot;s2&quot;&gt;&quot;postgres&quot;&lt;/span&gt;:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt; O banco vai pedir para confirmar a senha após isso, se elas não forem iguasi a operação não vai funcionar. Após isso vai ser preciso acessar o arquivo de configuração do postgres que fica no seguinte path:/etc/postgresql/sua_versao_do_postgres/main/pg_hba.conf.
+O arquivo vai possuir uma linha com a seguinte designação:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# DO NOT DISABLE!&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# If you change this first entry you will need to make sure that the&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# database superuser can access the database using some other method.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Noninteractive access to all databases is required during automatic&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# maintenance (custom daily cronjobs, replication, and similar tasks).&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Database administrative login by Unix domain socket&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;local   &lt;/span&gt;all         	postgres                            	peer
+
+&lt;span class=&quot;c&quot;&gt;# TYPE  DATABASE    	USER        	ADDRESS             	METHOD&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# &quot;local&quot; is for Unix domain socket connections only&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;Altere o peer para md5 e restart o servico do banco de dados:&lt;/p&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;service postgresql restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$root&lt;/span&gt;: /home/gileno ❯ psql &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; postgres
+ Password &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;user postgres:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;Pronto, com isso você configurou uma senha em seu usuário postgres. &lt;/p&gt;
+
 </description>
         <pubDate>Mon, 21 Aug 2023 08:37:00 -0300</pubDate>
         <link>http://localhost:4000/it/2023/08/21/Instalar-postgres-no-ubuntu-22.04.html</link>
