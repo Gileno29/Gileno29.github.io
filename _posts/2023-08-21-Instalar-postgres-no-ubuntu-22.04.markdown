@@ -42,7 +42,7 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
 ```
 
 
-<p style="text-align:justify;">Pronto a partir desse momento já pode ser criado databases novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples "psql" para isso vamos precisar configurar uma senha para nosso usuario postgres.</p>
+<p style="text-align:justify;">Pronto a partir desse momento já pode ser criado databases, novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples "psql" para isso vamos precisar configurar uma senha para nosso usuario postgres.</p>
 
 - <p style="text-align:justify;">Para configurar uma senha para o usuario postgres podemos fazer da seguinte forma:</p>
 ```bash
@@ -50,7 +50,7 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
 	Enter new password for user "postgres":
 ```
 
-<p style="text-align:justify;"> O banco vai pedir para confirmar a senha após isso, se elas não forem iguasi a operação não vai funcionar. Após isso vai ser preciso acessar o arquivo de configuração do postgres que fica no seguinte path:/etc/postgresql/sua_versao_do_postgres/main/pg_hba.conf.
+<p style="text-align:justify;"> O banco vai solicitar para confirmar a senha após isso, se elas não forem iguais a operação não vai funcionar. Após isso vai ser preciso acessar o arquivo de configuração do postgres que fica no seguinte caminho do sistema operacional:/etc/postgresql/sua_versao_do_postgres/main/pg_hba.conf.
 O arquivo vai possuir uma linha com a seguinte designação:</p>
 
 ```bash
@@ -67,7 +67,7 @@ local   all         	postgres                            	peer
 
 # "local" is for Unix domain socket connections only
 ```
- - <p style="text-align:justify;">Altere o peer para md5 e restart o servico do banco de dados:</p>
+ - <p style="text-align:justify;">Altere o peer para md5 e reinicie o servico do banco de dados:</p>
 ```bash
 	sudo service postgresql restart
  ```
