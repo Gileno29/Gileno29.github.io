@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>.config - Blogging about IT</title>
+    <title>Usuario Root - Descomplicando a tecnologia</title>
     <meta name="description" content="Its a space to learn real IT" />
 
     <meta name="HandheldFriendly" content="True" />
@@ -43,7 +43,7 @@
 <!--         <header class="post-header">
             <a id="blog-logo" href="http://localhost:4000">
                 
-                    <span class="blog-title">.config</span>
+                    <span class="blog-title">Usuario Root</span>
                 
             </a>
         </header> -->
@@ -101,7 +101,7 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
   </li>
 </ul>
 
-<p style="text-align:justify;">Pronto a partir desse momento já pode ser criado databases novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples "psql" para isso vamos precisar configurar uma senha para nosso usuario postgres.</p>
+<p style="text-align:justify;">Pronto a partir desse momento já pode ser criado databases, novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples "psql" para isso vamos precisar configurar uma senha para nosso usuario postgres.</p>
 
 <ul>
   <li>
@@ -112,7 +112,7 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
   </li>
 </ul>
 
-<p style="text-align:justify;"> O banco vai pedir para confirmar a senha após isso, se elas não forem iguasi a operação não vai funcionar. Após isso vai ser preciso acessar o arquivo de configuração do postgres que fica no seguinte path:/etc/postgresql/sua_versao_do_postgres/main/pg_hba.conf.
+<p style="text-align:justify;"> O banco vai solicitar para confirmar a senha após isso, se elas não forem iguais a operação não vai funcionar. Após isso vai ser preciso acessar o arquivo de configuração do postgres que fica no seguinte caminho do sistema operacional:/etc/postgresql/sua_versao_do_postgres/main/pg_hba.conf.
 O arquivo vai possuir uma linha com a seguinte designação:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DO NOT DISABLE!</span>
@@ -130,7 +130,7 @@ O arquivo vai possuir uma linha com a seguinte designação:</p>
 </code></pre></div></div>
 <ul>
   <li>
-    <p style="text-align:justify;">Altere o peer para md5 e restart o servico do banco de dados:</p>
+    <p style="text-align:justify;">Altere o peer para md5 e reinicie o servico do banco de dados:</p>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo </span>service postgresql restart
 </code></pre></div>    </div>
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$root</span>: /home/gileno ❯ psql <span class="nt">-U</span> postgres
@@ -190,7 +190,7 @@ O arquivo vai possuir uma linha com a seguinte designação:</p>
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="">.config</a> &copy; 
+        <a href="">Usuario Root</a> &copy; 
               2023 &bull; All rights reserved.
       </section>
       <section class="poweredby">Made with Jekyll using 

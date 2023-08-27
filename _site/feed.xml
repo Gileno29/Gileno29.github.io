@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <description>Blogging about IT</description>
+    <description>Descomplicando a tecnologia</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Aug 2023 16:45:46 -0300</pubDate>
-    <lastBuildDate>Fri, 25 Aug 2023 16:45:46 -0300</lastBuildDate>
-    <generator>Jekyll v4.3.2</generator>
+    <pubDate>Sun, 27 Aug 2023 13:03:17 -0300</pubDate>
+    <lastBuildDate>Sun, 27 Aug 2023 13:03:17 -0300</lastBuildDate>
+    <generator>Jekyll v3.9.0</generator>
     
       <item>
         <title>Instalando o PostgreSQL no Ubuntu 22.04 lts</title>
@@ -54,7 +54,7 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p style=&quot;text-align:justify;&quot;&gt;Pronto a partir desse momento já pode ser criado databases novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples &quot;psql&quot; para isso vamos precisar configurar uma senha para nosso usuario postgres.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;Pronto a partir desse momento já pode ser criado databases, novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples &quot;psql&quot; para isso vamos precisar configurar uma senha para nosso usuario postgres.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -65,7 +65,7 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p style=&quot;text-align:justify;&quot;&gt; O banco vai pedir para confirmar a senha após isso, se elas não forem iguasi a operação não vai funcionar. Após isso vai ser preciso acessar o arquivo de configuração do postgres que fica no seguinte path:/etc/postgresql/sua_versao_do_postgres/main/pg_hba.conf.
+&lt;p style=&quot;text-align:justify;&quot;&gt; O banco vai solicitar para confirmar a senha após isso, se elas não forem iguais a operação não vai funcionar. Após isso vai ser preciso acessar o arquivo de configuração do postgres que fica no seguinte caminho do sistema operacional:/etc/postgresql/sua_versao_do_postgres/main/pg_hba.conf.
 O arquivo vai possuir uma linha com a seguinte designação:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# DO NOT DISABLE!&lt;/span&gt;
@@ -83,7 +83,7 @@ O arquivo vai possuir uma linha com a seguinte designação:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p style=&quot;text-align:justify;&quot;&gt;Altere o peer para md5 e restart o servico do banco de dados:&lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;Altere o peer para md5 e reinicie o servico do banco de dados:&lt;/p&gt;
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;service postgresql restart
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$root&lt;/span&gt;: /home/gileno ❯ psql &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; postgres
@@ -103,18 +103,6 @@ O arquivo vai possuir uma linha com a seguinte designação:&lt;/p&gt;
       </item>
     
       <item>
-        <title>Hello World!</title>
-        <description>&lt;h2&gt;Jekyllti&lt;/h2&gt;
-&lt;p&gt;Y Love You World s3&lt;/p&gt;
-</description>
-        <pubDate>Wed, 14 Jan 2015 12:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2015/01/14/hello-world.html</link>
-        <guid isPermaLink="true">http://localhost:4000/2015/01/14/hello-world.html</guid>
-        
-        
-      </item>
-    
-      <item>
         <title>Welcome to Jekyll!</title>
         <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-w&lt;/code&gt; switch) to see your changes!
 To add new posts, simply add a file in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
@@ -130,7 +118,7 @@ To add new posts, simply add a file in the &lt;code class=&quot;language-plainte
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Sun, 10 Nov 2013 07:18:00 -0300</pubDate>
+        <pubDate>Sun, 10 Nov 2013 08:18:00 -0200</pubDate>
         <link>http://localhost:4000/thriller/comedy/horror/2013/11/10/welcome-to-jekyll.html</link>
         <guid isPermaLink="true">http://localhost:4000/thriller/comedy/horror/2013/11/10/welcome-to-jekyll.html</guid>
         
