@@ -4,7 +4,7 @@ title:  "Instalando o PostgreSQL no Ubuntu 22.04 lts"
 date:   2023-08-21 08:37
 categories: IT
 ---
-<p style="text-align:justify;"> O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como aravores e indices de expressão que até então não são implementados em outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse <a href="https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/">link</a>. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas.Bem vamos lá!.</p>
+<p style="text-align:justify;"> O postgres é um dos bancos de dados relacionais mais utilizados recentemente, devido a sua conformidade com ACID(Atomicidade, consistencia isolamento e duarabilidade) em todas as suas configurações além de implementar diferentes algoritimos para controle de índice como arvores e índices de expressão que até então não são implementados em alguns outros bancos relacionais como o MySQL, existem inúmeros artigos na internet falando sobre diferenças entre esses bancos e realizando comparativos entre eles, o ponto aqui não é esse, mas aos interesados vou deixar o link de um artigo da AWS sobre o tema nesse <a href="https://aws.amazon.com/pt/compare/the-difference-between-mysql-vs-postgresql/">link</a>. Nesse post vou repassar uma situação simples porém para iniciantes pode ser um pouco complicado de realizar, vou apresentar como é possível instalar o postgres no linux, mais precisamente no ubuntu 22.04 lts e algumas configurações básicas que podem ser realizadas.Bem vamos lá!.</p>
 
 ## Instalação
 - Atualize seus repositorios.
@@ -17,9 +17,9 @@ categories: IT
 	sudo apt install postgresql postgresql-contrib
 ```
 
-<p style="text-align:justify;">A opção -contrib permite que seja utilizado alguns modulos adicionais caso seja preciso para algo, não é obrigatorio instalar, então pode ser deixado de lado no momento da instlação se você não precisa de algum desses modulos específicos. <a href="https://www.mankier.com/package/postgresql-contrib">Aqui</a> tem uma lista desses modulos do pacote.</p>
+<p style="text-align:justify;">A opção -contrib permite que seja utilizado alguns modulos adicionais caso seja preciso para algo em seu projeto, não é obrigatorio instalar, então pode ser deixado de lado no momento da instalação se você não precisa de algum desses modulos específicos. <a href="https://www.mankier.com/package/postgresql-contrib">Aqui</a> tem uma lista desses modulos do pacote.</p>
 
-<p style="text-align:justify;">após a instalação finalizar o postgres por padrão vai ccriar um usuario em sua máquina chamdo postgres e você pode utilizar esse usuario para logar no banco de dados. Como isso funciona? Bem o postgres trabalha com esquema de "ROLES" para gerenciamento de usuarios e permicionamento, no final é bem similar ao users e groups de sistemas Linux/Unix, após está instalado o postgres vai utilizar ident authentication traduzindo: Ele vai associar usuarios de seu sistema como alguma ROLE que Esteja configurada nele, nesse caso a ROLE postgres que vai ser associada ao usuario postgres.</p>
+<p style="text-align:justify;">Após a instalação finalizar o postgres por padrão vai criar um usuário em sua máquina chamado "postgres" e você pode utilizar esse usuário para logar no banco de dados. Como isso funciona? Bem o postgres trabalha com esquema de "ROLES" para gerenciamento de usuários e permicionamento, no final é bem similar ao users e groups de sistemas Linux/Unix, após está instalado o postgres vai utilizar "ident authentication", traduzindo: Ele vai associar usuarios de seu sistema como alguma ROLE que Esteja configurada nele, nesse caso a ROLE postgres que vai ser associada ao usuario postgres.</p>
 
 ## Acesso e configuração
 Vamos agora logar no baco de dados.
@@ -42,9 +42,9 @@ Para logar no banco de dados existe algumas formas, vou passar a que acredito se
 ```
 
 
-<p style="text-align:justify;">Pronto a partir desse momento já pode ser criado databases, novas roles para Gerenciamento das informações e o que mais seja necessário. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database, que você deseja que mesmo quem esteja logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples "psql" para isso vamos precisar configurar uma senha para nosso usuario postgres.</p>
+<p style="text-align:justify;">Pronto a partir desse momento já pode ser criado databases e novas roles para gerenciamento das informações. Porém vamos dizer que você deseja por um pouco mais de segurança no acesso a seu database que você deseja que mesmo quem estever logado como root em seu servidor não consiga acessar diretamente seu banco de dados com um simples "psql" para isso vamos precisar configurar uma senha para nosso usuário postgres.</p>
 
-- <p style="text-align:justify;">Para configurar uma senha para o usuario postgres podemos fazer da seguinte forma:</p>
+- <p style="text-align:justify;">Para configurar uma senha para o usuário postgres podemos fazer da seguinte forma:</p>
 ```bash
 	postgres=# \password
 	Enter new password for user "postgres":
