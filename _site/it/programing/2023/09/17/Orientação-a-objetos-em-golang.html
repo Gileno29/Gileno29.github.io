@@ -65,7 +65,7 @@
 <p style="text-align: justify;"> Antes de falarmos diretamente sobre o golang é importante relembrar de alguns conceitos essenciais de orientção a o objetos, vamos lá.</p>
 
 <h4 id="abstração">abstração</h4>
-<p style="text-align: justify"> A abstração e um dos pontos mais cruciais dentro de linguagens que implementam Orientação a Objetos, como estamos lidando com uma representação de um objeto real, é preciso imaginar o que esse objeto irá realizar dentro de nosso sistema. Existem três pontos importantes que precisam ser levados em consideração.</p>
+<p style="text-align: justify"> A abstração e um dos pontos mais cruciais dentro de linguagens que implementam Orientação a Objetos, como estamos lidando com uma representação de um objeto real, é preciso imaginar o que esse objeto irá realizar dentro de nosso sistema.</p>
 
 <h4 id="identidade">Identidade</h4>
 <p style="text-align: justify"> É preciso dar uma identidade ao objetos que criamos essa identidade deve ser unica dentro do sistema para evitar conflitos, devido a isso várias liguagens implementam o conceito de pacotes ou namespaces evitando assim que o objetos se repita dentro do pacote. </p>
@@ -113,13 +113,14 @@
 
 </code></pre></div></div>
 
-<p style="text-aling: justify"> Nesse exemplo temos uma classe que vai ser a base para nossos objetos, e nela temos seus atributos(caracteristicas) e seus métodos(Ações) isso quer dizer que todos os objetos criados a partir dessa classe vão possui os mesmos metodos e atributos. Então, como podemos criar um objeto a partir dessa classe? da seguinte maneira: </p>
+<p style="text-align: justify;"> Nesse exemplo temos uma classe que vai ser a base para nossos objetos, e nela temos seus atributos(caracteristicas) e seus métodos(Ações) isso quer dizer que todos os objetos criados a partir dessa classe vão possui os mesmos metodos e atributos. Então, como podemos criar um objeto a partir dessa classe? da seguinte maneira: </p>
 
-<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kt">var</span> <span class="n">objCarro</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Carro</span><span class="p">();</span>
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">Carro</span> <span class="n">objCarro</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Caroo</span><span class="p">();</span>
+
 </code></pre></div></div>
-<p style="text-aling: justify"> Essa variavel objCarro possui acesso a todos os metodos e atributos da classe Carro. </p>
+<p style="text-align: justify;"> Essa variavel objCarro possui acesso a todos os metodos e atributos da classe Carro. </p>
 
-<p style="text-aling: justify"> Já em golang poderiamos facilmente fazer da seguinte forma:</p>
+<p style="text-align: justify;"> Já em golang poderiamos facilmente fazer da seguinte forma:</p>
 
 <div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">type</span> <span class="n">Carro</span> <span class="k">struct</span> <span class="p">{</span>
         <span class="n">Modelo</span> <span class="kt">string</span>
@@ -128,21 +129,59 @@
         <span class="n">Fabricante</span> <span class="kt">string</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span><span class="n">Carro</span> <span class="p">)</span> <span class="n">Ligar</span><span class="p">(){</span>
+    <span class="k">func</span> <span class="p">(</span><span class="n">c</span> <span class="n">Carro</span> <span class="p">)</span> <span class="n">Ligar</span><span class="p">(){</span>
         <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Carro ligado!"</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span><span class="n">carro</span><span class="p">)</span> <span class="n">Desligar</span><span class="p">(){</span>
+    <span class="k">func</span> <span class="p">(</span><span class="n">c</span> <span class="n">carro</span><span class="p">)</span> <span class="n">Desligar</span><span class="p">(){</span>
         <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Carro desligado!"</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="k">func</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">Carro</span><span class="p">)</span> <span class="n">Acelerar</span><span class="p">(){</span>
+    <span class="k">func</span> <span class="p">(</span><span class="n">c</span>  <span class="n">Carro</span><span class="p">)</span> <span class="n">Acelerar</span><span class="p">(){</span>
         <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Carro acelerando..."</span><span class="p">)</span>
     <span class="p">}</span>
     
-    <span class="k">func</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">Carro</span><span class="p">)</span> <span class="n">Frear</span><span class="p">(){</span>
+    <span class="k">func</span> <span class="p">(</span><span class="n">c</span>  <span class="n">Carro</span><span class="p">)</span> <span class="n">Frear</span><span class="p">(){</span>
         <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Carro freando..."</span><span class="p">)</span>
     <span class="p">}</span>
+</code></pre></div></div>
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">c1</span><span class="o">:=</span> <span class="p">{</span>
+        <span class="n">Modelo</span><span class="o">:</span> <span class="s">"modelo1"</span><span class="p">,</span>
+        <span class="n">Marca</span><span class="o">:</span> <span class="s">"marca1"</span><span class="p">,</span>
+        <span class="n">Chaci</span><span class="o">:</span> <span class="s">"chaci1"</span><span class="p">,</span>
+        <span class="n">Fabricante</span><span class="o">:</span> <span class="s">"Fabricante1"</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+
+<h4 id="encapsulamento">Encapsulamento</h4>
+
+<p style="text-align: justify;">
+Go encapsula coisas a nível de pacote. Nomes que começam com letra minúscula são visíveis, apenas, dentro do pacote. Você pode esconder tudo em um pacote privado e expor, apenas, tipos, interfaces e funções fábricas específicas.
+
+Para esconder o tipo Foo e expor apenas a interface, renomearíamo-na para letra mínuscula, foo, e proveríamos uma função NewFoo() retornando a interface pública Fooer:</p>
+
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">type</span> <span class="n">CarroInterface</span> <span class="p">{</span>
+    <span class="n">GetModelo</span><span class="p">()</span>
+    <span class="n">SetModelo</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="k">type</span> <span class="n">carro</span> <span class="k">struct</span> <span class="p">{</span>
+        <span class="n">Modelo</span> <span class="kt">string</span>
+        <span class="n">Marca</span> <span class="kt">string</span>
+        <span class="n">Chaci</span> <span class="kt">string</span>
+        <span class="n">Fabricante</span> <span class="kt">string</span>
+    <span class="p">}</span>   
+    <span class="k">func</span> <span class="p">(</span><span class="n">c</span> <span class="n">carro</span><span class="p">)</span> <span class="n">GetModelo</span><span class="p">()</span> <span class="kt">string</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">c</span><span class="o">.</span><span class="n">modelo</span>
+    <span class="p">}</span>
+    
+    <span class="k">func</span> <span class="p">(</span><span class="n">c</span> <span class="n">carro</span><span class="p">)</span> <span class="n">SetModelo</span><span class="p">(</span><span class="kt">string</span> <span class="n">m</span><span class="p">)</span> <span class="kt">string</span><span class="p">{</span>
+         <span class="n">c</span><span class="o">.</span><span class="n">Modelo</span><span class="o">=</span><span class="n">m</span>
+    <span class="p">}</span>
+
+    <span class="k">func</span> <span class="n">NewCarro</span><span class="p">()</span> <span class="n">CarroInterface</span><span class="p">{</span>
+        <span class="k">return</span> <span class="o">&amp;</span><span class="n">carro</span>
+    <span class="p">}</span> 
 </code></pre></div></div>
 
         </section>

@@ -11,7 +11,7 @@ categories: IT Programing
 <p style="text-align: justify;"> Antes de falarmos diretamente sobre o golang é importante relembrar de alguns conceitos essenciais de orientção a o objetos, vamos lá.</p>
 
 #### abstração 
-<p style="text-align: justify"> A abstração e um dos pontos mais cruciais dentro de linguagens que implementam Orientação a Objetos, como estamos lidando com uma representação de um objeto real, é preciso imaginar o que esse objeto irá realizar dentro de nosso sistema. Existem três pontos importantes que precisam ser levados em consideração.</p>
+<p style="text-align: justify"> A abstração e um dos pontos mais cruciais dentro de linguagens que implementam Orientação a Objetos, como estamos lidando com uma representação de um objeto real, é preciso imaginar o que esse objeto irá realizar dentro de nosso sistema.</p>
 
 #### Identidade
 <p style="text-align: justify"> É preciso dar uma identidade ao objetos que criamos essa identidade deve ser unica dentro do sistema para evitar conflitos, devido a isso várias liguagens implementam o conceito de pacotes ou namespaces evitando assim que o objetos se repita dentro do pacote. </p>
@@ -65,14 +65,15 @@ categories: IT Programing
 
 ```
 
-<p style="text-aling: justify"> Nesse exemplo temos uma classe que vai ser a base para nossos objetos, e nela temos seus atributos(caracteristicas) e seus métodos(Ações) isso quer dizer que todos os objetos criados a partir dessa classe vão possui os mesmos metodos e atributos. Então, como podemos criar um objeto a partir dessa classe? da seguinte maneira: </p>
+<p style="text-align: justify;"> Nesse exemplo temos uma classe que vai ser a base para nossos objetos, e nela temos seus atributos(caracteristicas) e seus métodos(Ações) isso quer dizer que todos os objetos criados a partir dessa classe vão possui os mesmos metodos e atributos. Então, como podemos criar um objeto a partir dessa classe? da seguinte maneira: </p>
 
 ```c#
-    var objCarro = new Carro();
-```
-<p style="text-aling: justify"> Essa variavel objCarro possui acesso a todos os metodos e atributos da classe Carro. </p>
+   Carro objCarro = new Caroo();
 
-<p style="text-aling: justify"> Já em golang poderiamos facilmente fazer da seguinte forma:</p>
+```
+<p style="text-align: justify;"> Essa variavel objCarro possui acesso a todos os metodos e atributos da classe Carro. </p>
+
+<p style="text-align: justify;"> Já em golang poderiamos facilmente fazer da seguinte forma:</p>
 
 ```golang
     type Carro struct {
@@ -82,19 +83,59 @@ categories: IT Programing
         Fabricante string
     }
 
-    func (c *Carro ) Ligar(){
+    func (c Carro ) Ligar(){
         fmt.Println("Carro ligado!")
     }
 
-    func (c *carro) Desligar(){
+    func (c carro) Desligar(){
         fmt.Println("Carro desligado!")
     }
 
-    func (c * Carro) Acelerar(){
+    func (c  Carro) Acelerar(){
         fmt.Println("Carro acelerando...")
     }
     
-    func (c * Carro) Frear(){
+    func (c  Carro) Frear(){
         fmt.Println("Carro freando...")
     }
+```
+```golang 
+    c1:= {
+        Modelo: "modelo1",
+        Marca: "marca1",
+        Chaci: "chaci1",
+        Fabricante: "Fabricante1"
+    }
+
+```
+
+#### Encapsulamento
+
+<p style="text-align: justify;">
+Go encapsula coisas a nível de pacote. Nomes que começam com letra minúscula são visíveis, apenas, dentro do pacote. Você pode esconder tudo em um pacote privado e expor, apenas, tipos, interfaces e funções fábricas específicas.
+
+Para esconder o tipo Foo e expor apenas a interface, renomearíamo-na para letra mínuscula, foo, e proveríamos uma função NewFoo() retornando a interface pública Fooer:</p>
+
+```golang
+  type CarroInterface {
+    GetModelo()
+    SetModelo()
+  }
+  type carro struct {
+        Modelo string
+        Marca string
+        Chaci string
+        Fabricante string
+    }   
+    func (c carro) GetModelo() string{
+        return c.modelo
+    }
+    
+    func (c carro) SetModelo(string m) string{
+         c.Modelo=m
+    }
+
+    func NewCarro() CarroInterface{
+        return &carro
+    } 
 ```
