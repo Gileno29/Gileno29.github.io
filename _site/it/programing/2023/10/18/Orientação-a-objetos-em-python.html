@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Usuario Root - Descomplicando a tecnologia</title>
+    <meta name="description" content="Its a space to learn real IT" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css " />
+
+</head>
+<body class="home-template">
+
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Orientação a Objetos em Python</h1>
+            <section class="post-meta">
+                
+                    on IT and Programing
+                
+                <time class="post-date" datetime="2023-10-18">18 Oct 2023</time>
+            </section>
+        </header>
+
+<!--         <header class="post-header">
+            <a id="blog-logo" href="http://localhost:4000">
+                
+                    <span class="blog-title">Usuario Root</span>
+                
+            </a>
+        </header> -->
+
+        <!-- <span class="post-meta">
+            <time datetime="2023-10-18">18 Oct 2023</time>
+            
+                on IT and Programing
+            
+        </span> -->
+
+        <!-- <h1 class="post-title">Orientação a Objetos em Python</h1> -->
+
+        <section class="post-content">
+            <p style="text-align:justify;"> O python assim como outras linguagens implementa o paradigma de orientação a objetos durante esse mini tutorial vamos ver alguns exemplos de como isso é feito nessa linguagem.</p>
+
+<h3 id="orientação-a-objetos">Orientação a objetos</h3>
+
+<p style="text-align: justify;"> Antes de falarmos diretamente sobre o assunto é importante relembrar de alguns conceitos essenciais de orientação a o objetos, vamos lá.</p>
+
+<h4 id="abstração">abstração</h4>
+<p style="text-align: justify"> A abstração e um dos pontos mais cruciais dentro de linguagens que implementam Orientação a Objetos, como estamos lidando com uma representação de um objeto real, é preciso imaginar o que esse objeto irá realizar dentro de nosso sistema.</p>
+
+<h4 id="identidade">Identidade</h4>
+<p style="text-align: justify"> É preciso dar uma identidade ao objetos que criamos essa identidade deve ser unica dentro do sistema para evitar conflitos, devido a isso várias liguagens implementam o conceito de pacotes ou namespaces evitando assim que o objetos se repita dentro do pacote. </p>
+
+<h4 id="caracteristicas">Caracteristicas</h4>
+<p style="text-align: justify"> No mundo real qualquer objeto possui elementos que o definem, em orientação a objetos esses elementos são nomeados de propriedades ou atributos, por exemplo, um carro poderia ter como propriedades cor, modelo, placa e valor. </p>
+
+<h4 id="ações-dos-objetos">Ações dos objetos</h4>
+<p style="text-align: justify"> Por fim é preciso definir as ações do objeto em questão essas ações dentro do mundo de orientação a objetos são chamados de de métodos, tomando como exemplo o objeto corro ele poderia implementar os metodos Ligar() Acelerar() Frear() e Desligar(), esses metodos vão possuir definido em seu interior todo o código para que eles funcionem de forma efetiva.</p>
+
+<p style="text-align: justify;"> bem tendo relembrado isso podemos processeguir. Caso queiram mais detalhes podem ler esse <a href="https://www.devmedia.com.br/os-4-pilares-da-programacao-orientada-a-objetos/9264">artigo</a> da devimedia.com.br que foi de onde resumi grande parte das informações a respeito dos conceitos</p>
+
+<h4 id="declarando-classes">Declarando classes</h4>
+<p style="text-align:justify"> Dentro do paradigma de orientação a objetos é a representação, uma abstração do mundo real, para declararmos uma classe em python</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">class</span> <span class="nc">ContaBancaria</span><span class="p">():</span>
+        <span class="c1"># Atributos e métodos da sua classe
+</span>        <span class="n">self</span><span class="p">.</span><span class="n">agencia</span><span class="o">=</span><span class="sh">'</span><span class="s">0</span><span class="sh">'</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">conta</span><span class="o">=</span><span class="sh">''</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">saldo</span><span class="o">=</span><span class="mf">0.00</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">ativo</span><span class="o">=</span><span class="bp">True</span>
+
+</code></pre></div></div>
+
+<p style="text-align:justify"> quando buscamos iniciar obrigatoriamente nossos objetos com valores podemos utilizar de contrutores, dentro do python pode ser feito da seguinte forma:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ContaBancaria</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">agencia</span><span class="p">,</span> <span class="n">conta</span><span class="p">,</span> <span class="n">saldo</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">agencia</span> <span class="o">=</span> <span class="n">agencia</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">conta</span> <span class="o">=</span> <span class="n">conta</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">saldo</span> <span class="o">=</span> <span class="n">saldo</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">ativo</span><span class="o">=</span><span class="bp">True</span>
+
+</code></pre></div></div>
+<p style="text-align: justify;">Para instanciarmos objetos com python podemos fazert da seguinte maneira:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ContaBancaria</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">agencia</span><span class="p">,</span> <span class="n">conta</span><span class="p">,</span> <span class="n">saldo</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">agencia</span> <span class="o">=</span> <span class="n">agencia</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">conta</span> <span class="o">=</span> <span class="n">conta</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">saldo</span> <span class="o">=</span> <span class="n">saldo</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">ativo</span><span class="o">=</span><span class="bp">True</span>
+
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">cb1</span> <span class="o">=</span> <span class="nc">ContaBancaria</span><span class="p">(</span><span class="sh">"</span><span class="s">0001</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2232</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">0</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">cb1</span><span class="p">.</span><span class="n">conta</span><span class="p">)</span>
+
+</code></pre></div></div>
+<p style="text-align: justify;"> Ao se executar o código acima vamos criar um obejto do tipo conta bancaria, e iniciarmos ele com uma agencia, conta e um saldo   </p>
+<p style="text-align: justify;">Como sabemos uma classe possui atributos (que definem suas características) e métodos (que definem seus comportamentos). Vamos criar agora um metodo para a classe conta bancaria.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ContaBancaria</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">agencia</span><span class="p">,</span> <span class="n">conta</span><span class="p">,</span> <span class="n">saldo</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">agencia</span> <span class="o">=</span> <span class="n">agencia</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">conta</span> <span class="o">=</span> <span class="n">conta</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">saldo</span> <span class="o">=</span> <span class="n">saldo</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">ativo</span><span class="o">=</span><span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">desativar</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">ativo</span><span class="o">=</span><span class="bp">False</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Conta bancaria desativada com sucesso</span><span class="sh">"</span><span class="p">)</span>
+
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">cb1</span> <span class="o">=</span> <span class="nc">ContaBancaria</span><span class="p">(</span><span class="sh">"</span><span class="s">0001</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2232</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">0</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">cb1</span><span class="p">.</span><span class="n">conta</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p style="text-align: justify;">Agora vamos entrar em um conceito importandte dentro desse universo: Atributos de visibilidade.</p>
+<p style="text-align: justify;">Bem, para iniciarmos existem 3 tipos de atributos de visibilidade,Public, Private e Protect.</p>
+<ul>
+  <li>Public: Atrivbutos e métodos públicos podem ser acessados e modificados de qualquer parte do projeto.</li>
+  <li>Private: Atributos e métodos definidos como privados só poderão ser  invocados, acessados ou modificados somente por seu proprio projeto(modulo).</li>
+  <li>Protected: Atributos e métodos protegidos só podem ser invocados, acessados e modificados  por classes que herdam de outras classes através do conceito de herança.</li>
+</ul>
+
+<p style="text-align: justify;">O Python ao contrario de outras linguagens como o Java que é voltada  por completo ao paradigma de orientação a objetos implementa esses atributos só que a sua própria maneira</p>
+<p style="text-align: justify;">Caso desejamos torna os privados os atributos dessa classe poderiamos por "__"  no inicio de seus nomes.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ContaBancaria</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">agencia</span><span class="p">,</span> <span class="n">conta</span><span class="p">,</span> <span class="n">saldo</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">__agencia</span> <span class="o">=</span> <span class="n">agencia</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">__conta</span> <span class="o">=</span> <span class="n">conta</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">__saldo</span> <span class="o">=</span> <span class="n">saldo</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">__ativo</span><span class="o">=</span><span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">desativar</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">__ativo</span><span class="o">=</span><span class="bp">False</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Conta bancaria desativada com sucesso</span><span class="sh">"</span><span class="p">)</span>
+
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">cb1</span> <span class="o">=</span> <span class="nc">ContaBancaria</span><span class="p">(</span><span class="sh">"</span><span class="s">0001</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">2232</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">0</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">cb1</span><span class="p">.</span><span class="n">conta</span><span class="p">)</span>
+</code></pre></div></div>
+<p style="text-align: justify;">porém no python isso não passa de uma convenção, significa que é uma ideologia criada pelos desenvolvedores, poŕem esses atributos continuariam acessiveis de fora da classe</p>
+
+        </section>
+
+        
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.jpg)">
+                    <span class="hidden">Gileno Duarte's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <!-- Author Name -->
+                    <h4> Gileno Duarte </h4>
+                    <!-- Author Bio -->
+                    <p>
+                        Sou Profissional de TI a mais de 5 anos atuando com Diversas areas desde de Infraestrutura a Desenvolvimento. Atuo com Liguagens como Pyhton, Golang, Javascript e C++.
+                        Sou apaixonado por TI atualmente foco em melhorar meus conhecimentos em Cloud.
+                    </p>
+                </section>
+            
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Orientação a Objetos em Python&amp;url=http://yourblog-domain.com/it/programing/2023/10/18/Orienta%C3%A7%C3%A3o-a-objetos-em-python.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yourblog-domain.com/it/programing/2023/10/18/Orienta%C3%A7%C3%A3o-a-objetos-em-python.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yourblog-domain.com/it/programing/2023/10/18/Orienta%C3%A7%C3%A3o-a-objetos-em-python.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+            <!-- Disqus comments -->
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="">Usuario Root</a> &copy; 
+              2023 &bull; All rights reserved.
+      </section>
+      <section class="poweredby">Made with Jekyll using 
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section>
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>   
+</body>
+</html>
